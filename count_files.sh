@@ -1,28 +1,24 @@
 #!/bin/bash
 
-# Script : count_files.sh
-# Objectif : Compter le nombre de FICHIERS dans un répertoire donné
-# Usage : ./count_files.sh [répertoire]
+# Demander à l'utilisateur le chemin du répertoire
+echo "Entrez le chemin du répertoire :"
+read repertoire
 
-# Vérification de la présence d'un argument
-if [ $# -eq 0 ]; then
-    echo "Erreur : Aucun répertoire spécifié."
-    echo "Usage : $0 <répertoire>"
-    exit 1
+# Vérifier que le répertoire existe
+if [ -d "$repertoire" ]; then
+    echo "Fichiers trouvés dans $repertoire :"
+    
+    # Utiliser ls pour lister les fichiers
+    liste=$(ls "$repertoire")
+    
+    # Boucle simple pour afficher chaque fichier (apprentissage de la boucle)
+    for fichier in $liste; do
+        echo "- $fichier"
+    done
+
+    # Compter le nombre total avec wc -l
+    nb_fichiers=$(ls "$repertoire" | wc -l)
+    echo "Nombre total de fichiers : $nb_fichiers"
+else
+    echo "Erreur : le répertoire n'existe pas."
 fi
-
-# Vérification que l'argument est un répertoire valide
-if [ ! -d "$1" ]; then
-    echo "Erreur : '$1' n'est pas un répertoire valide."
-    exit 1
-fi
-
-# Comptage des fichiers (exclut les sous-répertoires et fichiers cachés)
-# - 'find' : cherche dans le répertoire
-# - '-maxdepth 1' : ne parcourt pas les sous-dossiers
-# - '-type f' : filtre uniquement les fichiers
-# - 'wc -l' : compte le nombre de résultats
-file_count=$(find "$1" -maxdepth 1 -type f | wc -l)
-
-# Affichage du résultat avec formatage
-echo "Le dossier $1 contient $file_count fichier(s)."
