@@ -1,24 +1,17 @@
 #!/bin/bash
 
-# Demander à l'utilisateur le chemin du répertoire
-echo "Entrez le chemin du répertoire :"
+# Script qui compte le nombre de fichiers dans un répertoire donné
+# Objectifs : ls, wc -l et boucle simple
+
+echo "Entrez le chemin du répertoire à analyser :"
 read repertoire
 
-# Vérifier que le répertoire existe
-if [ -d "$repertoire" ]; then
-    echo "Fichiers trouvés dans $repertoire :"
-    
-    # Utiliser ls pour lister les fichiers
-    liste=$(ls "$repertoire")
-    
-    # Boucle simple pour afficher chaque fichier (apprentissage de la boucle)
-    for fichier in $liste; do
-        echo "- $fichier"
-    done
-
-    # Compter le nombre total avec wc -l
-    nb_fichiers=$(ls "$repertoire" | wc -l)
-    echo "Nombre total de fichiers : $nb_fichiers"
-else
-    echo "Erreur : le répertoire n'existe pas."
+# Vérification que le répertoire existe
+if [ ! -d "$repertoire" ]; then
+    echo "Erreur : Le répertoire '$repertoire' n'existe pas."
+    exit 1
 fi
+
+# Méthode 1: Comptage simple avec ls et wc -l
+nombre_fichiers=$(ls "$repertoire" | wc -l)
+echo "Méthode simple: Il y a $nombre_fichiers éléments dans le répertoire."
