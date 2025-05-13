@@ -1,8 +1,12 @@
 #!/bin/bash
-
 # Exercice 1 - Comptage simple avec ls et wc -l
+
 echo "Entrez le chemin du répertoire :"
 read repertoire
 
-nombre_elements=$(ls "$repertoire" | wc -l)
-echo "Il y a $nombre_elements éléments dans le répertoire."
+if [ -d "$repertoire" ]; then
+  nb=$(ls "$repertoire" | wc -l)
+  echo "Il y a $nb éléments dans le répertoire."
+else
+  echo "Le répertoire n'existe pas."
+fi
