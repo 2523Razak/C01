@@ -1,10 +1,10 @@
 #!/bin/bash
-# Exercice 1 - Comptage simple avec ls et wc -l
-echo "Entrez le chemin du répertoire :"
-read repertoire
-if [ -d "$repertoire" ]; then
-  nb=$(ls "$repertoire" | wc -l)
-  echo "Il y a $nb éléments dans le répertoire."
+echo "Entrez le chemin du dossier :"
+read dossier
+# Vérifie si le dossier existe
+if [ -d "$dossier" ]; then
+  nb=$(ls "$dossier" | wc -l) # Compte les éléments visibles
+  echo "Le dossier '$dossier' contient $nb élément(s) visibles."
 else
-  echo "Le répertoire n'existe pas."
+  echo "Le dossier '$dossier' n'existe pas."
 fi
