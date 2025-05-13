@@ -1,8 +1,7 @@
 #!/bin/bash
+# Je liste tous les fichiers dans le dossier actuel avec ls
+# Puis je compte combien il y en a avec wc -l
+nombre_fichiers=$(ls | wc -l)
 
-# Comptage de fichiers avec ls et wc -l
-echo "Chemin du répertoire :"
-read repertoire
-
-nombre_wc=$(ls "$repertoire"|wc -l)
-echo "Nombre d'éléments:$nombre_wc"
+# J'affiche le résultat comme dans l'exemple
+echo "Le dossier actuel contient $nombre_fichiers fichier(s)."
