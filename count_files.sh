@@ -1,11 +1,8 @@
 #!/bin/bash
-# Script pour compter le nombre de fichiers dans un dossier
 
-echo "Entrez le nom du dossier :"
-read dossier
-if [ -d "$dossier" ]; then
-  nb=$(ls -p "$dossier" | grep -v / | wc -l)
-  echo "Le dossier '$dossier' contient $nb fichier(s)."
-else
-  echo "Le dossier '$dossier' n'existe pas."
-fi
+# Exercice 1 - Comptage simple avec ls et wc -l
+echo "Entrez le chemin du répertoire :"
+read repertoire
+
+nombre_elements=$(ls "$repertoire" | wc -l)
+echo "Il y a $nombre_elements éléments dans le répertoire."
