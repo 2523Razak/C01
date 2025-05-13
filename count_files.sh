@@ -1,10 +1,8 @@
 #!/bin/bash
-echo "Entrez le chemin du dossier :"
-read dossier
-# Vérifie si le dossier existe
-if [ -d "$dossier" ]; then
-  nb=$(ls "$dossier" | wc -l) # Compte les éléments visibles
-  echo "Le dossier '$dossier' contient $nb élément(s) visibles."
-else
-  echo "Le dossier '$dossier' n'existe pas."
-fi
+
+# Comptage de fichiers avec ls et wc -l
+echo "Chemin du répertoire :"
+read repertoire
+
+nombre_wc=$(ls "$repertoire"|wc -l)
+echo "Nombre d'éléments:$nombre_wc"
