@@ -1,4 +1,5 @@
 #!/bin/bash
-
-nombre_fichiers=$(ls | wc -l)
-echo "Le dossier contient $nombre_fichiers élément(s)."
+echo "Entrez le nom du dossier :"
+read dossier
+nb=$(ls "$dossier" | wc -l)
+echo "Le dossier $dossier contient $nb fichier(s)."
