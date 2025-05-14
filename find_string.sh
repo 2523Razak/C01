@@ -1,4 +1,5 @@
 #!/bin/bash
+# exercice 2 find_string.sh
 
 echo "Entrez le nom du fichier :"
 read fichier
@@ -6,9 +7,9 @@ read fichier
 echo "Entrez le mot à rechercher :"
 read mot
 
-if [ -f "$fichier" ]; then
-  # je cherche le mot dans le fichier avec grep
-  grep "$mot" "$fichier"
+# je cherche le mot et je teste s'il a été trouvé
+if grep -q "$mot" "$fichier"; then
+  echo "La chaîne'$mot'a été trouvée dans $fichier."
 else
-  echo "Le fichier '$fichier' n'existe pas."
+  echo "La chaîne'$mot'n'a pas été trouvée dans $fichier."
 fi
