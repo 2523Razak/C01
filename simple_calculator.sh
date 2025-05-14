@@ -1,17 +1,18 @@
 #!/bin/bash
-read a
-read op
-read b
+read a b op
 
 if [ "$op" = "+" ]; then
 echo "Résultat : $((a + b))"
 fi
+
 if [ "$op" = "-" ]; then
 echo "Résultat : $((a - b))"
 fi
+
 if [ "$op" = "*" ]; then
 echo "Résultat : $((a * b))"
 fi
+
 if [ "$op" = "/" ]; then
 echo "Résultat : $((a / b))"
 fi
